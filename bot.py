@@ -1,4 +1,4 @@
-# (©)Codexbotz
+# (Â©)Codexbotz
 # Recode by @mrismanaziz
 # t.me/SharingUserbot & t.me/Lunatic0de
 
@@ -12,6 +12,8 @@ from config import (
     APP_ID,
     CHANNEL_ID,
     FORCE_SUB_CHANNEL,
+    FORCE_SUB_CHANNEL2,
+    FORCE_SUB_CHANNEL3,
     FORCE_SUB_GROUP,
     LOGGER,
     OWNER,
@@ -41,7 +43,7 @@ class Bot(Client):
         except Exception as a:
             self.LOGGER(__name__).warning(a)
             self.LOGGER(__name__).info(
-                "Bot Berhenti. Gabung Group https://t.me/SharingUserbot untuk Bantuan"
+                "Bot Berhenti. Chat https://t.me/kingtiannnn untuk Bantuan"
             )
             sys.exit()
 
@@ -62,6 +64,46 @@ class Bot(Client):
                 )
                 self.LOGGER(__name__).info(
                     "Bot Berhenti. Gabung Group https://t.me/SharingUserbot untuk Bantuan"
+                )
+                sys.exit()
+                
+         if FORCE_SUB_CHANNEL2:
+            try:
+                link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                if not link:
+                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
+                    link = (await self.get_chat(FORCE_SUB_CHANNEL2)).invite_link
+                self.invitelink = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning(
+                    "Bot tidak dapat Mengambil link invite dari FORCE_SUB_CHANNEL2!"
+                )
+                self.LOGGER(__name__).warning(
+                    f"Pastikan @{self.username} adalah admin di Channel Tersebut, Chat ID F-Subs Channel Saat Ini: {FORCE_SUB_CHANNEL2}"
+                )
+                self.LOGGER(__name__).info(
+                    "Bot Berhenti. CHAT  https://t.me/kingtiannnn untuk Bantuan"
+                )
+                sys.exit()
+                
+        if FORCE_SUB_CHANNEL3:
+            try:
+                link = (await self.get_chat(FORCE_SUB_CHANNEL3)).invite_link
+                if not link:
+                    await self.export_chat_invite_link(FORCE_SUB_CHANNEL3)
+                    link = (await self.get_chat(FORCE_SUB_CHANNEL3)).invite_link
+                self.invitelink = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning(
+                    "Bot tidak dapat Mengambil link invite dari FORCE_SUB_CHANNEL3!"
+                )
+                self.LOGGER(__name__).warning(
+                    f"Pastikan @{self.username} adalah admin di Channel Tersebut, Chat ID F-Subs Channel Saat Ini: {FORCE_SUB_CHANNEL3}"
+                )
+                self.LOGGER(__name__).info(
+                    "Bot Berhenti. CHAT  https://t.me/kingtiannnn untuk Bantuan"
                 )
                 sys.exit()
 
@@ -102,7 +144,7 @@ class Bot(Client):
 
         self.set_parse_mode("html")
         self.LOGGER(__name__).info(
-            f"[🔥 BERHASIL DIAKTIFKAN! 🔥]\n\nBOT Dibuat oleh @{OWNER}\nJika @{OWNER} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/SharingUserbot"
+            f"[ðŸ”¥ BERHASIL DIAKTIFKAN! ðŸ”¥]\n\nBOT Dibuat oleh @{OWNER}\nJika @{OWNER} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/SharingUserbot"
         )
 
     async def stop(self, *args):
